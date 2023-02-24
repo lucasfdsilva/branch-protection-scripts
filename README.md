@@ -1,2 +1,2 @@
-# branch-protection-scripts
-Repository for useful scripts when managing Branch Protection Rules in multiple repositories and branches.
+# gh-useful-scripts
+Repository for useful scripts when working with GitHub Repositories.
