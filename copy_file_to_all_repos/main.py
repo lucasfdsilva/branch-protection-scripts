@@ -26,6 +26,7 @@ for subdir in subdirs:
     except (FileNotFoundError, PermissionError) as e:
         print(f"Error copying file to {subdir}: {e}")
 
+    # pushing the latest changes to their respective GH repos
     try:
         subprocess.run(["git", "checkout", "dev"])
         subprocess.run(["git", "config", "pull.rebase", "false"])
