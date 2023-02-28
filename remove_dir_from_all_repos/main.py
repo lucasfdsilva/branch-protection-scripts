@@ -2,14 +2,15 @@ import os
 import shutil
 import subprocess
 
-# Path to the parent directory containing the subdirectories to search for "aws_accounts"
-PARENT_DIR = "/home/ldasilva/repos/cleantrace/"
+# Path to the parent directory containing the subdirectories to search for DIRECTORY_TO_BE_DELETED
+PARENT_DIR = ""
+DIRECTORY_TO_BE_DELETED = ""
 
 # Loop over all directories inside the parent directory
 for subdir in os.listdir(PARENT_DIR):
     subdir_path = os.path.join(PARENT_DIR, subdir)
     if os.path.isdir(subdir_path):
-        aws_account_dir = os.path.join(subdir_path, "aws_accounts")
+        aws_account_dir = os.path.join(subdir_path, DIRECTORY_TO_BE_DELETED)
         if os.path.isdir(aws_account_dir):
             # Delete the "aws_account" directory
             try:
