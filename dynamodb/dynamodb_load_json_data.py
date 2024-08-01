@@ -7,7 +7,7 @@ with open('dynamodb_data.json', 'r') as file:
 
 # Initialize a session using Boto3
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-destination_table = dynamodb.Table('quantsal-qa-usermaster')
+destination_table = dynamodb.Table('table-name')
 
 # Write items to the new table
 with destination_table.batch_writer() as batch:

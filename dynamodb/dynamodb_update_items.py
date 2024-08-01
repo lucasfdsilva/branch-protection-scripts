@@ -4,7 +4,7 @@ from decimal import Decimal
 
 # Initialize a session using Boto3
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-table = dynamodb.Table('quantsal-qa-usermaster')
+table = dynamodb.Table('table-name')
 
 def fetch_all_items():
     response = table.scan()
