@@ -1,6 +1,8 @@
 import boto3
 from datetime import datetime, timedelta, timezone
 
+DRY_RUN = True
+
 def delete_old_amis():
     # Create a session using default AWS credentials
     ec2_client = boto3.client('ec2', region_name='us-east-1')
@@ -24,7 +26,7 @@ def delete_old_amis():
             print(f"Deregistering AMI: {image_id}, Created on: {creation_date_str}")
 
             # Deregister the AMI
-            ec2_client.deregister_image(ImageId=image_id)
+            ec2_client.deregister_image(ImageId=image_id, DryRun=DRY_RUN)
 
             # Delete associated snapshots
             block_mappings = image.get('BlockDeviceMappings', [])
@@ -32,7 +34,7 @@ def delete_old_amis():
                 if 'Ebs' in block and 'SnapshotId' in block['Ebs']:
                     snapshot_id = block['Ebs']['SnapshotId']
                     print(f"Deleting snapshot: {snapshot_id}")
-                    ec2_client.delete_snapshot(SnapshotId=snapshot_id)
+                    ec2_client.delete_snapshot(SnapshotId=snapshot_id, DryRun=DRY_RUN)
 
 if __name__ == "__main__":
     delete_old_amis()
